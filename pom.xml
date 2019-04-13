@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>summerframework-starter-build</artifactId>
+	<packaging>pom</packaging>
+	<name>Summerframework Starter Build</name>
+	<description>Summerframework Starter Build</description>
+	<version>2.0.0.RELEASE</version>
+	<parent>
+		<groupId>com.bkjk.platform.summerframework</groupId>
+		<artifactId>summerframework-build</artifactId>
+		<version>2.0.0.RELEASE</version>
+	</parent>
+	<properties>
+		<bintray.package>starters</bintray.package>
+	</properties>
+	<modules>
+		<module>summerframework-dependencies</module>
+		<module>summerframework-starter-parent</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-rules</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<bannedDependencies>
+									<excludes>
+										<exclude>commons-logging:*:*</exclude>
+									</excludes>
+									<searchTransitive>true</searchTransitive>
+								</bannedDependencies>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
